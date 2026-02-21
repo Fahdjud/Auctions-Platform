@@ -1,3 +1,5 @@
+![Fahdjud Auction Platform](Banner.png)
+
 # Fahdjud Auction Platform
 
 A Django-based auction platform where users can create listings, place bids, add items to their watchlist, and interact through comments.
@@ -72,7 +74,7 @@ A Django-based auction platform where users can create listings, place bids, add
 
 6. **Apply database migrations**
    ```bash
-   python manage.py migrate
+   python manage.py migrate auctions
    ```
 
 7. **Create a superuser (admin)**
