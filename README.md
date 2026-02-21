@@ -65,21 +65,26 @@ A Django-based auction platform where users can create listings, place bids, add
    - `ALLOWED_HOSTS`: Add your domain names (comma-separated)
    - `CSRF_TRUSTED_ORIGINS`: Add trusted origins for CSRF protection
 
-5. **Apply database migrations**
+5. **Make database migrations**
+   ```bash
+   python manage.py makemigrations
+   ```
+
+6. **Apply database migrations**
    ```bash
    python manage.py migrate
    ```
 
-6. **Create a superuser (admin)**
+7. **Create a superuser (admin)**
    ```bash
    python manage.py createsuperuser
    ```
 
-7. **Load initial categories (optional)**
+8. **Load initial categories (optional)**
    
    You can add categories through the Django admin panel or create a data fixture.
 
-8. **Run the development server**
+9. **Run the development server**
    ```bash
    python manage.py runserver
    ```
