@@ -1,0 +1,50 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2 class="text-2xl font-bold mb-6">Active Listings On {{ category }}</h2>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    {% for i in listing %}
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <img class="w-full h-48 object-cover" src="{{ i.imageUrl }}" />
+    <div class="p-5">
+      <!-- Header with title and category tag -->
+      <div class="flex items-start justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-800">{{ i.title }}</h3>
+        {% if i.category %}
+        <span class="bg-black text-white text-xs font-medium px-2.5 py-0.5 rounded-full">{{ i.category }}</span>
+        {% endif %}
+      </div>
+
+      <p class="text-gray-600 text-sm mt-2">{{ i.description }}</p>
+
+      <!-- Owner and date info -->
+      <div class="flex items-center gap-3 mt-3 text-xs text-gray-500">
+        <div class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span>{{ i.owner }}</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>{{ i.createTime }}</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between mt-4">
+        <span class="text-xl font-bold text-black">${{ i.price }}</span>
+        <button class="bg-black hover:bg-grey-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-200">
+          <a href="{% url 'listingView' %}?listing={{ i.id }}">
+          View List
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+body {
+    padding: 10px;
+}
+
+.nav-item {
+    backgroundghost: blue;
+}

@@ -1,0 +1,15 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <c-accordion type='single' collapsible='true'>
+        {% for i in categories %}
+    <c-accordion.item value='{{ i }}'>
+        <c-accordion.trigger value='{{ i }}'>{{ i }}</c-accordion.trigger>
+        <c-accordion.content value='{{ i }}'>
+            <c-button><a href="{% url 'category' %}?category={{ i }}"> View Category </a></c-button>
+        </c-accordion.content>
+        </c-accordion.item>
+        {% endfor %}
+    </c-accordion>
+
+{% endblock %}

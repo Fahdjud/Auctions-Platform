@@ -1,0 +1,78 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="flex justify-center items-center min-h-screen bg-gray-50">
+        <div class="w-full max-w-md p-8">
+     <form action="{% url 'createListing' %}" method="post">
+        {% csrf_token %}
+
+
+        <c-card class='w-[380px]'>
+        <c-card.header>
+            <c-card.title>Create Listing</c-card.title>
+            <c-card.description>Enter listing details</c-card.description>
+            </c-card.header>
+            <c-card.content>
+        <c-form.field>
+        <c-form.label for='title'>title</c-form.label>
+        <c-input id='title' name='title'  type='text' placeholder='title'></c-input>
+        <c-form.description>
+            This will be your title.
+            </c-form.description>
+        </c-form.field>
+
+        <c-form.field>
+        <c-form.label for='description'>description</c-form.label>
+        <c-input id='description' name='description' placeholder='Enter detailed description'></c-input>
+        <c-form.description>
+            Provide a detailed description of your listing.
+            </c-form.description>
+        </c-form.field>
+
+        <c-form.field>
+        <c-form.label for='imageUrl'>Image url</c-form.label>
+        <c-input id='imageUrl' name='imageUrl' type='text' placeholder='https://example.com/image'></c-input>
+        <c-form.description>
+            This will be your Image url.
+            </c-form.description>
+        </c-form.field>
+
+        <c-form.field>
+        <c-form.label for='category'>category</c-form.label>
+        <c-combobox
+                    name='category'
+                    :options="[
+                    {% for cat in categories %}
+                    {'value': '{{ cat }}', 'label': '{{ cat }}'},
+                    {% endfor %}
+                    ]"
+                    placeholder='Search framework...'
+                    button_text='Select framework...'
+                    width='w-[200px]' />
+        <c-form.description>
+            This will be your Image url.
+            </c-form.description>
+        </c-form.field>
+
+         <c-form.field>
+        <c-form.label for='description'>price</c-form.label>
+        <c-input id='price' type='number' name='price' placeholder='Enter a price'></c-input>
+        <c-form.description>
+
+            </c-form.description>
+        </c-form.field>
+
+
+
+
+        <c-button type="submit" value="CreateListing">Create Listing</c-button>
+        </c-card.content>
+    </c-card>
+    </form>
+    </div>
+    </div>
+    
+
+
+{% endblock %}
